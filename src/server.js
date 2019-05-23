@@ -1,4 +1,3 @@
-import { join } from "path";
 import express from "express";
 
 const PORT = 4000;
