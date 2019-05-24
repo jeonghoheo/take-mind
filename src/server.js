@@ -1,5 +1,6 @@
 import express from "express";
 import socketIO from "socket.io";
+import logger from "morgan";
 
 const PORT = 4000;
 const app = express();
@@ -8,6 +9,7 @@ app.set("view engine", "pug");
 app.set("views", `${__dirname}/views`);
 // views폴더 경로 재설정하기
 app.use(express.static(`${__dirname}/static`));
+app.use(logger("dev"));
 app.get("/", (req, res) => res.render("home"));
 
 const handleListening = () => {
@@ -17,4 +19,10 @@ const handleListening = () => {
 
 const server = app.listen(PORT, handleListening);
 
-const io = socketIO(server);
+const io = socketIO.listen(server);
+
+let sockets = [];
+
+io.on("connection", socket => sockets.push(socket.id));
+
+setInterval(() => console.log(sockets), 1000);
