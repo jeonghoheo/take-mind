@@ -9,6 +9,7 @@ app.set("view engine", "pug");
 app.set("views", `${__dirname}/views`);
 // views폴더 경로 재설정하기
 app.use(express.static(`${__dirname}/static`));
+// static 파일 경로 설정하기
 app.use(logger("dev"));
 app.get("/", (req, res) => res.render("home"));
 
