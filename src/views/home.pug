@@ -7,6 +7,10 @@ html(lang="en")
         link(rel="stylesheet", href="styles/styles.css")
         title Take Mine
     body
-        h1 Hello World
+        .loginBox
+            form#jsLogin
+                input(placeholder="Whats your nickname", type="text")
+        .gameContainer#jsGame
+            h1 You are loged in
         script(src="/socket.io/socket.io.js")
-        script(src="/index.js")
+        script(src="/js/main.js")
