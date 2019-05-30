@@ -10,7 +10,9 @@ const events = {
   beganPath: "beganPath",
   strokedPath: "strokedPath",
   fill: "fill",
-  filled: "filled"
+  filled: "filled",
+  lineWidth: "lineWidth",
+  changeLineWidth: "changeLineWidth"
 };
 
 export default events;

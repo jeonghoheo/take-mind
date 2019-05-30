@@ -29,14 +29,19 @@ const beginPath = (x, y) => {
   ctx.moveTo(x, y);
 };
 
-const strokePath = (x, y, color = null) => {
+const strokePath = (x, y, color = null, size = null) => {
   let currentColor = ctx.strokeStyle;
+  let currentLineWeight = ctx.lineWidth;
   if (color !== null) {
     ctx.strokeStyle = color;
+  }
+  if (size !== null) {
+    ctx.lineWidth = size;
   }
   ctx.lineTo(x, y);
   ctx.stroke();
   ctx.strokeStyle = currentColor;
+  ctx.lineWidth = currentLineWeight;
 };
 
 const onMouseMove = event => {
@@ -51,7 +56,8 @@ const onMouseMove = event => {
       getSocket().emit(window.events.strokePath, {
         x,
         y,
-        color: ctx.strokeStyle
+        color: ctx.strokeStyle,
+        size: ctx.lineWidth
       });
     }
   }
@@ -63,10 +69,10 @@ const handleColorClick = event => {
   ctx.fillStyle = color;
 };
 
-function handleRangeChange(event) {
+const handleRangeChange = event => {
   const size = event.target.value;
   ctx.lineWidth = size;
-}
+};
 
 const handleModeClick = () => {
   if (filling === true) {
@@ -133,5 +139,6 @@ if (saveBtn) {
 }
 
 export const handleBeganPath = ({ x, y }) => beginPath(x, y);
-export const handleStrokedPath = ({ x, y, color }) => strokePath(x, y, color);
+export const handleStrokedPath = ({ x, y, color, size }) =>
+  strokePath(x, y, color, size);
 export const handleFilled = ({ color }) => fill(color);
