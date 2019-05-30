@@ -6,7 +6,7 @@ import {
   handleFilled,
   handleLineWeight
 } from "./paint";
-import { handlePlayerUpdate } from "./player";
+import { handlePlayerUpdate } from "./players";
 
 let socket = null;
 

@@ -11,8 +11,7 @@ const events = {
   strokedPath: "strokedPath",
   fill: "fill",
   filled: "filled",
-  lineWidth: "lineWidth",
-  changeLineWidth: "changeLineWidth"
+  playerUpdate: "playerUpdate"
 };
 
 export default events;
