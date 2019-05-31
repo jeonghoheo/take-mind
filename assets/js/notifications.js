@@ -11,18 +11,18 @@ const fireNotification = (text, color) => {
 
 const deleteNoti = () => {
   if (notification) {
-    notification.parentNode.removeChild(notification);
+    while (notification.length > 0) {
+      notification[0].parentNode.removeChild(notification[0]);
+    }
   }
 };
 
 export const handleNewUser = ({ nickname }) => {
   fireNotification(`${nickname} just logined!`, "rgb(0, 122, 255)");
-  setTimeout(deleteNoti, 1000);
+  setTimeout(deleteNoti, 2000);
 };
 
-export const handleDisconnected = ({ nickname }) =>{
+export const handleDisconnected = ({ nickname }) => {
   fireNotification(`${nickname} just left!`, "rgb(255, 204, 0)");
-  setTimeout(deleteNoti, 1000);
+  setTimeout(deleteNoti, 2000);
 };
-}
-  
