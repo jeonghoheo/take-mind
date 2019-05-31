@@ -13,12 +13,21 @@ const socketController = (socket, io) => {
   const sendPlayerUpdate = () => {
     superBroadcast(events.playerUpdate, { sockets });
   };
+
   const startGame = () => {
     if (inProgress === false) {
       inProgress = true;
       const painter = choosePainter();
       word = chooseWord();
+      io.to(painter.id).emit(events.painterNotif, { word });
+      superBroadcast(events.gameStarted);
+      console.log(inProgress);
     }
+  };
+
+  const endGame = () => {
+    inProgress = false;
+    console.log(inProgress);
   };
 
   socket.on(events.setNickname, ({ nickname }) => {
@@ -26,11 +35,16 @@ const socketController = (socket, io) => {
     sockets.push({ id: socket.id, points: 0, nickname: nickname });
     broadcast(events.newUser, { nickname });
     sendPlayerUpdate();
-    startGame();
+    if (sockets.length === 1) {
+      startGame();
+    }
   });
 
   socket.on(events.disconnect, () => {
     sockets = sockets.filter(aSocket => aSocket.id !== socket.id);
+    if (sockets.length === 1) {
+      endGame();
+    }
     broadcast(events.disconnected, { nickname: socket.nickname });
     sendPlayerUpdate();
   });

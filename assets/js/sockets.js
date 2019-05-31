@@ -6,7 +6,7 @@ import {
   handleFilled,
   handleLineWeight
 } from "./paint";
-import { handlePlayerUpdate } from "./players";
+import { handlePlayerUpdate, handleGameStarted } from "./players";
 
 let socket = null;
 
@@ -25,4 +25,5 @@ export const initSockets = aSocket => {
   socket.on(events.filled, handleFilled);
   socket.on(events.changeLineWidth, handleLineWeight);
   socket.on(events.playerUpdate, handlePlayerUpdate);
+  socket.on(events.gameStarted, handleGameStarted);
 };
