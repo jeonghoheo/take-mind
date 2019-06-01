@@ -12,6 +12,8 @@
     box-shadow: 0 3px 36px rgba(23, 55, 87, 0.1), 0 5px 15px rgba(0, 0, 0, 0.07);
   }
   .main {
+    display: flex;
+    flex-direction: column;
     margin-right: 200px;
     #jsCanvas {
       width: 700px;

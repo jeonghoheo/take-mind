@@ -11,7 +11,7 @@ html(lang="en")
             form#jsLogin
                 input(placeholder="Whats your nickname", type="text")
         .gameContainer#jsGame
-            .main
+            .main#jsMain
                 #jsNotifs
                 canvas.canvas#jsCanvas(width="700" height="700")
                 .controls#jsControls
@@ -34,7 +34,7 @@ html(lang="en")
                         .color.jsColor(style="background-color:rgb(90,200,250)")
                         .color.jsColor(style="background-color:rgb(0,122,255)")
                         .color.jsColor(style="background-color:rgb(88,86,214)")
-            .chat
+            .chat#jsChat
                 .player__board#jsPBoard
                 ul.chat__messages#jsMessages
                 form.chat__form#jsSendMsg
