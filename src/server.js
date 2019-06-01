@@ -4,7 +4,7 @@ import logger from "morgan";
 import socketController from "./socketController";
 import events from "./events";
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 app.set("view engine", "pug");
 // 템플린 엔진 설정하기
