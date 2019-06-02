@@ -9,3 +9,7 @@ Realtime Drawing Game built with SocketIO, Gulp and Node
 - [x] Static
 - [x] ESLint
 - [x] SocketIO
+
+## Check test take-mind
+
+[take-mind](https://thawing-wave-40741.herokuapp.com/)
