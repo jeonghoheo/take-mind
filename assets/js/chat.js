@@ -11,6 +11,7 @@ const appendMsg = (text, nickname) => {
   }:</span> ${text}
     `;
   messages.appendChild(li);
+  messages.scrollTop = messages.scrollHeight;
 };
 
 const handleSendMsg = event => {
